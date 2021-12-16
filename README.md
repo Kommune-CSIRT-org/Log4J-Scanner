@@ -33,6 +33,16 @@ With parameters:
 
 
 
+### Python
+Python program which performs the same task as the "windowsSearch.ps1" powershell script, but does not look inside packaged JAR files. It is written in Python3 and tested on v3.10.1 and 3.8.
+
+It can be run with and without arguments.  Without arguments, `python ./main.py`, is will scan `C:` or `/` dependent on OS.
+It can be supplied with a set of arguments, eg. `python ./main.py "ABSOLUTE PATH" "ABSOLUTE PATH"` where each argument is a path to the root of a folder you want to scan.  In order to ensure access, it has to be run with sudo.
+
+The log is written to `C:\Windows\Temp\kcsirtLog4jPythonScanner.log` or `/tmp/kcsirt/Log4jPythonScanner.log`.
+
+
+
 ### Bash
 These linux scripts looks only for the existence of `.jar` files named Log4J
 
@@ -49,14 +59,3 @@ For each file it will unzip the content of the `.jar` file, extract all text str
 All data is written to a temp file which can be extracted and reviewed for analysis, `/tmp/kcsirtFindScan.txt`.
 
 The command has to be run with sudo privileges in order to list all files.
-
-
-
-
-### Python
-Python program which performs the same task as the "windowsSearch.ps1" powershell script, but does not look inside packaged JAR files. It is written in Python3 and tested on v3.10.1 and 3.8.
-
-It can be run with and without arguments.  Without arguments, `python ./main.py`, is will scan `C:` or `/` dependent on OS.
-It can be supplied with a set of arguments, eg. `python ./main.py "ABSOLUTE PATH" "ABSOLUTE PATH"` where each argument is a path to the root of a folder you want to scan.  In order to ensure access, it has to be run with sudo.
-
-The log is written to `C:\Windows\Temp\kcsirtLog4jPythonScanner.log` or `/tmp/kcsirt/Log4jPythonScanner.log`.
