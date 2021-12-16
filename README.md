@@ -13,6 +13,26 @@ HelseCERT also showcases several mitigative methods.
 This contains an Ansible playbook and role for Linux OS and runs two scripts then fetches the output which they created in the `/tmp` directory.
 These scripts are the same as resides in the **Bash** folder.
 
+
+
+### Powershell
+This powershell script has to be run with Administrator privileges. 
+
+It scans either provided directories or all local and mapped drives.  Then it will try and find all files on the drive with extension `.jar`, `.java` and `.class`.  For each file it will try and find a `jar` file which contains the string *"JndiLookup.class"*, and `java` or `class` file with *"jndi* or *"log4j"* in the filename.
+
+The PowerShell script is tested on Windows 11 with PowerShell version 5.1.22000.282.
+
+Run the powershell script either with parameters or without.
+Without parameters:
+- `.\windowsSearch.ps1`
+- Tries to scan all drives and saves output to `C:\Windows\Temp\`
+
+With parameters:
+- `.\windowsSearch.ps1 -Location "ABSOLUTE PATH","ABSOLUTE PATH","ABSOLUTE PATH"`
+- The `-Location` parameter takes an array of strings containing absolute paths to root folder for scanning.
+
+
+
 ### Bash
 These linux scripts looks only for the existence of `.jar` files named Log4J
 
@@ -31,23 +51,10 @@ All data is written to a temp file which can be extracted and reviewed for analy
 The command has to be run with sudo privileges in order to list all files.
 
 
-### Powershell
-This powershell script has to be run with Administrator privileges.
-
-It scans either provided directories or all local and mapped drives.  Then it will try and find all files on the drive with extension `.jar`, `.java` and `.class`.  For each file it will try and find a `jar` file which contains the string *"JndiLookup.class"*, and `java` or `class` file with *"jndi* or *"log4j"* in the filename.
-
-Run the powershell script either with parameters or without.
-Without parameters:
-- `.\windowsSearch.ps1`
-- Tries to scan all drives and saves output to `C:\Windows\Temp\`
-
-With parameters:
-- `.\windowsSearch.ps1 -Location "ABSOLUTE PATH","ABSOLUTE PATH","ABSOLUTE PATH"`
-- The `-Location` parameter takes an array of strings containing absolute paths to root folder for scanning.
 
 
 ### Python
-Python program which performs the same task as the "windowsSearch.ps1" powershell script, but does not look inside packaged JAR files.
+Python program which performs the same task as the "windowsSearch.ps1" powershell script, but does not look inside packaged JAR files. It is written in Python3 and tested on v3.10.1 and 3.8.
 
 It can be run with and without arguments.  Without arguments, `python ./main.py`, is will scan `C:` or `/` dependent on OS.
 It can be supplied with a set of arguments, eg. `python ./main.py "ABSOLUTE PATH" "ABSOLUTE PATH"` where each argument is a path to the root of a folder you want to scan.  In order to ensure access, it has to be run with sudo.
