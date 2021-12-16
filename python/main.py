@@ -1,7 +1,10 @@
+#!/usr/bin/env python3
+# coding=utf-8
+#-*- coding: utf-8 -*-
 
 import logging
-from os.path import exists, isdir, isfile, islink, ismount, basename, dirname
-from os import listdir, walk
+from os.path import exists, isdir, isfile
+from os import walk
 import re
 import platform
 import sys
@@ -41,13 +44,11 @@ if __name__ == "__main__":
 		delimiter = "\\"
 		tempDir   = "C:\\Windows\\Temp"
 		logging.basicConfig(filename="C:\\Windows\\Temp\\kcsirtLog4jPythonScanner.log", 
-							encoding="utf-8", 
 							level=logging.INFO,
 							format='%(asctime)s:%(levelname)s:%(message)s',
                     		filemode='w')
 	else:
 		logging.basicConfig(filename="/tmp/kcsirtLog4jPythonScanner.log", 
-							encoding="utf-8", 
 							level=logging.INFO,
 							format='%(asctime)s:%(levelname)s:%(message)s',
                     		filemode='w')
