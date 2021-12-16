@@ -1,0 +1,27 @@
+---
+- set_fact:
+    varHostOs:  "{{ hostvars[inventory_hostname].ansible_distribution_version }}"
+
+- name: Linux LSOF check
+  script:
+    executable: "/bin/bash"
+    cmd:  linuxLSOFScan.sh
+  become: true
+
+- name: Fetch LSOF file
+  fetch:
+    src: "/tmp/kcsirtLSOFScan.txt"
+    dest: "/home/localadmin/ansible/temp_store/"
+
+
+- name: Linux Scan check
+  script:
+    executable: "/bin/bash"
+    cmd:  linuxFindScan.sh
+  become: true
+
+- name: Fetch scan result
+  fetch:
+    src: "/tmp/kcsirtFindScan.txt"
+    dest: "/home/localadmin/ansible/temp_store/"
+

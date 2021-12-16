@@ -1,0 +1,9 @@
+---
+- name: Scanning methods for Log4J2 on Linux OS
+  hosts: osLinux
+  
+  vars_files:
+    - ~/ansible/vault/default_vault.yml
+  
+  roles:
+    - role: log4jScan
