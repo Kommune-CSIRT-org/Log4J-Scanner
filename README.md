@@ -2,7 +2,7 @@
 Log4J Scanning tools for detection of use of Log4J or JNDILookup on local use on Windows and Linux.
 
 It consistst of four different scanners for both Linux and Windows and is based on Helse-Certs previous work as displayed on 
-[HelseCERT GitHub CVE-2021-44228ex](https://github.com/helsecert/CVE-2021-44228)
+[HelseCERT GitHub CVE-2021-44228](https://github.com/helsecert/CVE-2021-44228)
 
 HelseCERT also showcases several mitigative methods. 
 
