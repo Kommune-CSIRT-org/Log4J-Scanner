@@ -17,7 +17,7 @@ These scripts are the same as resides in the **Bash** folder.
 These linux scripts looks only for the existence of `.jar` files named Log4J
 
 #### linuxLSOFScan.sh
-This scripts lists all opened files processes and writes the list to a temp file "`/tmp/kcsirtLSOFScan.txt`" which can be reviewed for entries of Log4J or the JNDI lookup class manually.
+This scripts lists all opened files and writes the list to a temp file "`/tmp/kcsirtLSOFScan.txt`" which can be reviewed for entries of Log4J or the JNDI lookup class manually.
 The command has to be run with sudo privileges in order to list all files.
 
 #### linuxFindScan.sh
