@@ -18,8 +18,10 @@ if( $Locations.Length -gt 0 ){
 
 
 foreach($DRIVE in $DRIVES){
+	Write-Information "---------------------------------------------------------------------------------"
 	Write-Information "Searching drive $($DRIVE) for vulnerable .jar, .java and .class files"
-	
+
+	$ErrorFileList=@()
 	if( $ProvidedInput ){
 		$FILELIST = GCI "$($DRIVE)" -Recurse -Force -Include *.jar,*.java,*.class -EA SilentlyContinue -EV +ErrorFileList
 	}
@@ -29,20 +31,20 @@ foreach($DRIVE in $DRIVES){
 	
 	if( $ErrorFileList ) {
 		Write-Information "#######################################"
-		Write-Information "## LISTING ALL ACCESS ERRORS
+		Write-Information "## LISTING ALL ACCESS ERRORS"
 		Write-Information "#######################################"
 		foreach( $ErrorFile in  $ErrorFileList ){
 			Write-Information "$ErrorFile"
 		}
 		Write-Information "#######################################"
-		Write-Information "## END OF ACCESS ERRORS LISTING
+		Write-Information "## END OF ACCESS ERRORS LISTING"
 		Write-Information "#######################################"
 		Write-Information ""
 	}
 
 	foreach($FILE in $FILELIST) {
 		if( $FILE -match ".(java|class)$" ) {
-			if ( $FILE -match '(jndi|log4j)'){
+			if ( $FILE -match '(jndi|log4j)' ){
 				Write-Warning "Detected JNDI Class in: $($FILE)"
 			}
 		}
